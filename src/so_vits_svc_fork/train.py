@@ -195,7 +195,7 @@ class VitsLightning(pl.LightningModule):
             self.set_global_step(global_step)
 
         # check if using tpu or mps
-        if isinstance(self.trainer.accelerator, (TPUAccelerator, MPSAccelerator)):
+        if isinstance(self.trainer.accelerator, TPUAccelerator | MPSAccelerator):
             # patch torch.stft to use cpu
             LOG.warning("Using TPU/MPS. Patching torch.stft to use cpu.")
 
@@ -274,7 +274,7 @@ class VitsLightning(pl.LightningModule):
         # only save checkpoints if we are on the main device
         if (
             hasattr(self.device, "index")
-            and self.device.index != None
+            and self.device.index is not None
             and self.device.index != 0
         ):
             return
@@ -315,12 +315,8 @@ class VitsLightning(pl.LightningModule):
 
     def set_global_step(self, global_step: int):
         LOG.info(f"Setting global step to {global_step}")
-        self.trainer.fit_loop.epoch_loop.manual_optimization.optim_step_progress.total.completed = (
-            global_step
-        )
-        self.trainer.fit_loop.epoch_loop.automatic_optimization.optim_progress.optimizer.step.total.completed = (
-            global_step
-        )
+        self.trainer.fit_loop.epoch_loop.manual_optimization.optim_step_progress.total.completed = global_step
+        self.trainer.fit_loop.epoch_loop.automatic_optimization.optim_progress.optimizer.step.total.completed = global_step
         assert self.global_step == global_step, f"{self.global_step} != {global_step}"
 
     def set_total_batch_idx(self, total_batch_idx: int):
@@ -422,7 +418,7 @@ class VitsLightning(pl.LightningModule):
             y_hat_mb,
             ids_slice,
             z_mask,
-            (z, z_p, m_p, logs_p, m_q, logs_q),
+            (_z, z_p, m_p, logs_p, _m_q, logs_q),
             pred_lf0,
             norm_lf0,
             lf0,
@@ -450,7 +446,7 @@ class VitsLightning(pl.LightningModule):
                 kl_loss(z_p, logs_q, m_p, logs_p, z_mask) * self.hparams.train.c_kl
             )
             loss_fm = feature_loss(fmap_r, fmap_g)
-            loss_gen, losses_gen = generator_loss(y_d_hat_g)
+            loss_gen, _losses_gen = generator_loss(y_d_hat_g)
             loss_lf0 = F.mse_loss(pred_lf0, lf0)
             loss_gen_all = loss_gen + loss_fm + loss_mel + loss_kl + loss_lf0
 
@@ -521,7 +517,7 @@ class VitsLightning(pl.LightningModule):
 
         # discriminator loss
         with autocast(enabled=False):
-            loss_disc, losses_disc_r, losses_disc_g = discriminator_loss(
+            loss_disc, _losses_disc_r, _losses_disc_g = discriminator_loss(
                 y_d_hat_r, y_d_hat_g
             )
             loss_disc_all = loss_disc

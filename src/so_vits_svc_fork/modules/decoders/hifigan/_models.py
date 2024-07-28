@@ -276,7 +276,7 @@ class NSFHifiGANGenerator(torch.nn.Module):
         # LOG.info(1,x.shape,f0.shape,f0[:, None].shape)
         f0 = self.f0_upsamp(f0[:, None]).transpose(1, 2)  # bs,n,t
         # LOG.info(2,f0.shape)
-        har_source, noi_source, uv = self.m_source(f0)
+        har_source, _noi_source, _uv = self.m_source(f0)
         har_source = har_source.transpose(1, 2)
         x = self.conv_pre(x)
         x = x + self.cond(g)

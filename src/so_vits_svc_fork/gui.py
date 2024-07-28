@@ -546,7 +546,7 @@ def main():
     # columns
     layout = [[column1, column2]]
     # get screen size
-    screen_width, screen_height = sg.Window.get_screen_size()
+    _screen_width, screen_height = sg.Window.get_screen_size()
     if screen_height < 720:
         layout = [
             [

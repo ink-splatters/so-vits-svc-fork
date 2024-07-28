@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 import warnings
+from collections.abc import Iterable
 from logging import getLogger
 from pathlib import Path
-from typing import Iterable
 
 import librosa
 import soundfile

@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
 from logging import getLogger
 from pathlib import Path
 from random import shuffle
-from typing import Iterable, Literal
+from typing import Literal
 
 import librosa
 import numpy as np

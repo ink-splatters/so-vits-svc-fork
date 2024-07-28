@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from collections.abc import Sequence
 from logging import getLogger
 from pathlib import Path
-from typing import Literal, Sequence
+from typing import Literal
 
 import librosa
 import numpy as np
@@ -41,9 +42,9 @@ def infer(
     max_chunk_seconds: float = 40,
     device: str | torch.device = get_optimal_device(),
 ):
-    if isinstance(input_path, (str, Path)):
+    if isinstance(input_path, str | Path):
         input_path = [input_path]
-    if isinstance(output_path, (str, Path)):
+    if isinstance(output_path, str | Path):
         output_path = [output_path]
     if len(input_path) != len(output_path):
         raise ValueError(

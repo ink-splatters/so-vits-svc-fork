@@ -40,7 +40,7 @@ def train_cluster(
                 "Too few HuBERT features to cluster. Consider using a smaller number of clusters."
             )
         LOG.info(
-            f"shape: {features.shape}, size: {features.nbytes/1024**2:.2f} MB, dtype: {features.dtype}"
+            f"shape: {features.shape}, size: {features.nbytes / 1024**2:.2f} MB, dtype: {features.dtype}"
         )
         with timer() as t:
             if use_minibatch:
@@ -81,7 +81,7 @@ def train_cluster(
             )
             for i in range(0, len(paths), batch_size):
                 LOG.info(
-                    f"Processing batch {i//batch_size+1}/{n_batches} for speaker {input_dir.stem}"
+                    f"Processing batch {i // batch_size + 1}/{n_batches} for speaker {input_dir.stem}"
                 )
                 features = []
                 for path in paths[i : i + batch_size]:

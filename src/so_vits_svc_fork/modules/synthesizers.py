@@ -1,6 +1,7 @@
 import warnings
+from collections.abc import Sequence
 from logging import getLogger
-from typing import Any, Literal, Sequence
+from typing import Any, Literal
 
 import torch
 from torch import nn
@@ -177,7 +178,7 @@ class SynthesizerTrn(nn.Module):
         pred_lf0 = self.f0_decoder(x, norm_lf0, x_mask, spk_emb=g)
 
         # encoder
-        z_ptemp, m_p, logs_p, _ = self.enc_p(x, x_mask, f0=f0_to_coarse(f0))
+        _z_ptemp, m_p, logs_p, _ = self.enc_p(x, x_mask, f0=f0_to_coarse(f0))
         z, m_q, logs_q, spec_mask = self.enc_q(spec, spec_lengths, g=g)
 
         # flow
@@ -220,14 +221,14 @@ class SynthesizerTrn(nn.Module):
             pred_lf0 = self.f0_decoder(x, norm_lf0, x_mask, spk_emb=g)
             f0 = (700 * (torch.pow(10, pred_lf0 * 500 / 2595) - 1)).squeeze(1)
 
-        z_p, m_p, logs_p, c_mask = self.enc_p(
+        z_p, _m_p, _logs_p, c_mask = self.enc_p(
             x, x_mask, f0=f0_to_coarse(f0), noice_scale=noice_scale
         )
         z = self.flow(z_p, c_mask, g=g, reverse=True)
 
         # MB-iSTFT-VITS
         if self.mb:
-            o, o_mb = self.dec(z * c_mask, g=g)
+            o, _o_mb = self.dec(z * c_mask, g=g)
         else:
             o = self.dec(z * c_mask, g=g, f0=f0)
         return o

@@ -5,10 +5,11 @@ import os
 import re
 import subprocess
 import warnings
+from collections.abc import Sequence
 from itertools import groupby
 from logging import getLogger
 from pathlib import Path
-from typing import Any, Literal, Sequence
+from typing import Any, Literal
 
 import matplotlib
 import matplotlib.pylab as plt
@@ -198,7 +199,7 @@ def get_hubert_model(
         model = HubertModel.from_pretrained("lengyue233/content-vec-best")
     # Hubert is always used in inference mode, we can safely remove weight-norms
     for m in model.modules():
-        if isinstance(m, (nn.Conv2d, nn.Conv1d)):
+        if isinstance(m, nn.Conv2d | nn.Conv1d):
             remove_weight_norm_if_exists(m)
 
     return model.to(device)
@@ -316,9 +317,7 @@ def save_checkpoint(
     checkpoint_path: Path | str,
 ) -> None:
     LOG.info(
-        "Saving model and optimizer state at epoch {} to {}".format(
-            iteration, checkpoint_path
-        )
+        f"Saving model and optimizer state at epoch {iteration} to {checkpoint_path}"
     )
     if hasattr(model, "module"):
         state_dict = model.module.state_dict()
@@ -351,9 +350,14 @@ def clean_checkpoints(
     path_to_models = Path(path_to_models)
 
     # Define sort key functions
-    name_key = lambda p: int(re.match(r"[GD]_(\d+)", p.stem).group(1))
-    time_key = lambda p: p.stat().st_mtime
-    path_key = lambda p: (p.stem[0], time_key(p) if sort_by_time else name_key(p))
+    def name_key(p):
+        return int(re.match("[GD]_(\\d+)", p.stem).group(1))
+
+    def time_key(p):
+        return p.stat().st_mtime
+
+    def path_key(p):
+        return p.stem[0], time_key(p) if sort_by_time else name_key(p)
 
     models = list(
         filter(
@@ -383,7 +387,10 @@ def clean_checkpoints(
 
 def latest_checkpoint_path(dir_path: Path | str, regex: str = "G_*.pth") -> Path | None:
     dir_path = Path(dir_path)
-    name_key = lambda p: int(re.match(r"._(\d+)\.pth", p.name).group(1))
+
+    def name_key(p):
+        return int(re.match("._(\\d+)\\.pth", p.name).group(1))
+
     paths = list(sorted(dir_path.glob(regex), key=name_key))
     if len(paths) == 0:
         return None
@@ -445,7 +452,7 @@ def repeat_expand_2d(content: torch.Tensor, target_len: int) -> torch.Tensor:
 
 def plot_data_to_numpy(x: ndarray, y: ndarray) -> ndarray:
     matplotlib.use("Agg")
-    fig, ax = plt.subplots(figsize=(10, 2))
+    fig, _ax = plt.subplots(figsize=(10, 2))
     plt.plot(x)
     plt.plot(y)
     plt.tight_layout()

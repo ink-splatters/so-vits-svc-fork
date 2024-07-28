@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+from collections.abc import Callable, Iterable
 from copy import deepcopy
 from logging import getLogger
 from pathlib import Path
-from typing import Any, Callable, Iterable, Literal
+from typing import Any, Literal
 
 import attrs
 import librosa
@@ -25,8 +26,7 @@ def pad_array(array_, target_length: int):
     current_length = array_.shape[0]
     if current_length >= target_length:
         return array_[
-            (current_length - target_length)
-            // 2 : (current_length - target_length)
+            (current_length - target_length) // 2 : (current_length - target_length)
             // 2
             + target_length,
             ...,
