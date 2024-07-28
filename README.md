@@ -1,5 +1,7 @@
 # SoftVC VITS Singing Voice Conversion Fork
 
+### [`so-vits-svc-fork`](https://github.com/voicepaw/so-vits-svc-fork) buildable with `rye`
+
 [简体中文](README_zh_CN.md)
 
 <p align="center">
@@ -22,8 +24,7 @@
   </a>
 </p>
 
-[@voicepaw's](https://github.com/voicepaw/so-vits-svc-fork) fork of [`so-vits-svc`](https://github.com/svc-develop-team/so-vits-svc) with
-**realtime support** and **greatly improved interface**, migrated to [rye](https://rye.astral.sh)
+A fork of [`so-vits-svc`](https://github.com/svc-develop-team/so-vits-svc) with **realtime support** and **greatly improved interface**. Based on branch `4.0` (v1) (or `4.1`) and the models are compatible. `4.1` models are not supported. Other models are also not supported.
 
 ## No Longer Maintained
 
@@ -70,13 +71,11 @@ Elsewhere, several start-ups have improved and marketed voice changers (probably
 
 ### Build system breaking changes
 
-- pyproject.toml migrated to
-- linting migrated to [ruff](https://docs.astral.sh/ruff/) - fast modern formatting and linting tool, compatible with `black` OOB
+- pyproject.toml migrated to [`rye`](https://rye.astral.sh)
+- linting migrated to [`ruff`](https://docs.astral.sh/ruff/) - fast modern formatting and linting tool, compatible with `black` OOB
 
-As PyPI wheel is still TODO, you will need to build it yourself.
-
-And due to all the dependencies have been bumped to their latest versions, there might be no wheels for all,
-for your platform, in which case you would need a working compiler toolchain.
+There is no wheel currently available, as well as there might be no wheels for the dependencies which have been updated to their
+latest versions. Therefore, you will most likely need working compiler toolchain.
 
 ### `nix` dev shell
 
