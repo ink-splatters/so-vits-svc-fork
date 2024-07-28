@@ -33,6 +33,8 @@ certifi==2024.7.4
 cffi==1.16.0
     # via sounddevice
     # via soundfile
+cfgv==3.4.0
+    # via pre-commit
 charset-normalizer==3.3.2
     # via requests
 click==8.1.7
@@ -43,12 +45,16 @@ cm-time==0.1.2
     # via so-vits-svc-fork
 contourpy==1.2.1
     # via matplotlib
+coverage==7.6.0
+    # via pytest-cov
 cycler==0.12.1
     # via matplotlib
 cython==3.0.10
     # via pyworld
 decorator==5.1.1
     # via librosa
+distlib==0.3.8
+    # via virtualenv
 dnspython==2.6.1
     # via email-validator
 email-validator==2.2.0
@@ -61,6 +67,7 @@ filelock==3.15.4
     # via huggingface-hub
     # via torch
     # via transformers
+    # via virtualenv
 fonttools==4.53.1
     # via matplotlib
 frozenlist==1.4.1
@@ -85,12 +92,16 @@ httpx==0.27.0
 huggingface-hub==0.24.2
     # via tokenizers
     # via transformers
+identify==2.6.0
+    # via pre-commit
 idna==3.7
     # via anyio
     # via email-validator
     # via httpx
     # via requests
     # via yarl
+iniconfig==2.0.0
+    # via pytest
 jinja2==3.1.4
     # via fastapi
     # via torch
@@ -132,6 +143,8 @@ multidict==6.0.5
     # via yarl
 networkx==3.3
     # via torch
+nodeenv==1.9.1
+    # via pre-commit
 numba==0.60.0
     # via librosa
     # via resampy
@@ -168,7 +181,9 @@ packaging==24.1
     # via lightning
     # via lightning-utilities
     # via matplotlib
+    # via pipdeptree
     # via pooch
+    # via pytest
     # via pytorch-lightning
     # via tensorboardx
     # via torchmetrics
@@ -177,12 +192,22 @@ pebble==5.0.7
     # via so-vits-svc-fork
 pillow==10.4.0
     # via matplotlib
+pip==24.1.2
+    # via pipdeptree
+pip-licenses==5.0.0
+pipdeptree==2.23.1
 platformdirs==4.2.2
     # via pooch
+    # via virtualenv
+pluggy==1.5.0
+    # via pytest
 pooch==1.8.2
     # via librosa
 praat-parselmouth==0.4.3
     # via so-vits-svc-fork
+pre-commit==3.7.1
+prettytable==3.10.2
+    # via pip-licenses
 protobuf==4.25.4
     # via onnx
     # via tensorboard
@@ -199,6 +224,9 @@ pyparsing==3.1.2
     # via matplotlib
 pysimplegui-4-foss==4.60.4.1
     # via so-vits-svc-fork
+pytest==8.3.2
+    # via pytest-cov
+pytest-cov==5.0.0
 python-dateutil==2.9.0.post0
     # via matplotlib
 python-dotenv==1.0.1
@@ -212,6 +240,7 @@ pyworld==0.3.4
 pyyaml==6.0.1
     # via huggingface-hub
     # via lightning
+    # via pre-commit
     # via pytorch-lightning
     # via transformers
     # via uvicorn
@@ -241,7 +270,6 @@ setuptools==71.1.0
     # via lightning-utilities
     # via so-vits-svc-fork
     # via tensorboard
-    # via torch
 shellingham==1.5.4
     # via typer
 six==1.16.0
@@ -271,6 +299,8 @@ threadpoolctl==3.5.0
     # via scikit-learn
 tokenizers==0.19.1
     # via transformers
+tomli==2.0.1
+    # via pip-licenses
 torch==2.4.0
     # via lightning
     # via pytorch-lightning
@@ -317,8 +347,12 @@ uvicorn==0.30.3
     # via fastapi
 uvloop==0.19.0
     # via uvicorn
+virtualenv==20.26.3
+    # via pre-commit
 watchfiles==0.22.0
     # via uvicorn
+wcwidth==0.2.13
+    # via prettytable
 websockets==12.0
     # via uvicorn
 werkzeug==3.0.3

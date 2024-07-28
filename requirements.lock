@@ -241,7 +241,6 @@ setuptools==71.1.0
     # via lightning-utilities
     # via so-vits-svc-fork
     # via tensorboard
-    # via torch
 shellingham==1.5.4
     # via typer
 six==1.16.0
