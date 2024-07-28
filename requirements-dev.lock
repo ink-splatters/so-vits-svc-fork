@@ -205,7 +205,7 @@ pooch==1.8.2
     # via librosa
 praat-parselmouth==0.4.3
     # via so-vits-svc-fork
-pre-commit==3.7.1
+pre-commit==3.8.0
 prettytable==3.10.2
     # via pip-licenses
 protobuf==4.25.4
