@@ -12,7 +12,7 @@
 </p>
 <p align="center">
   <a href="https://rye.astral.sh">
-    <img src=https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fastral-sh%2Frye%2Fmain%2Fartwork%2Fbadge.json" >
+    <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fastral-sh%2Frye%2Fmain%2Fartwork%2Fbadge.json" >
   </a>
   <a href="https://github.com/astral-sh/ruff">
     <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcharliermarsh%2Fruff%2Fmain%2Fassets%2Fbadge%2Fv1.json" alt=ruff >
@@ -22,7 +22,8 @@
   </a>
 </p>
 
-A fork of [`so-vits-svc`](https://github.com/svc-develop-team/so-vits-svc) with **realtime support** and **greatly improved interface**. Based on branch `4.0` (v1) (or `4.1`) and the models are compatible. `4.1` models are not supported. Other models are also not supported.
+[@voicepaw's](https://github.com/voicepaw/so-vits-svc-fork) fork of [`so-vits-svc`](https://github.com/svc-develop-team/so-vits-svc) with
+**realtime support** and **greatly improved interface**, migrated to [rye](https://rye.astral.sh)
 
 ## No Longer Maintained
 
@@ -62,89 +63,69 @@ Elsewhere, several start-ups have improved and marketed voice changers (probably
 - ~2x faster training
 - Ready to use just by installing with `pip`.
 - Automatically download pretrained models. No need to install `fairseq`.
-- Code completely formatted with black, isort, autoflake etc.
 
 [^c]: [#206](https://github.com/voicepaw/so-vits-svc-fork/issues/206)
 
 ## Installation
 
-### Option 1. One click easy installation
+### Build system breaking changes
 
-<a href="https://github.com/voicepaw/so-vits-svc-fork/releases/download/v1.3.2/install.bat" download>
-  <img src="https://img.shields.io/badge/.bat-download-blue?style=flat-square&logo=windows" alt="Download .bat">
-</a>
+- pyproject.toml migrated to
+- linting migrated to [ruff](https://docs.astral.sh/ruff/) - fast modern formatting and linting tool, compatible with `black` OOB
 
-This BAT file will automatically perform the steps described below.
+As PyPI wheel is still TODO, you will need to build it yourself.
 
-### Option 2. Manual installation (using pipx, experimental)
+And due to all the dependencies have been bumped to their latest versions, there might be no wheels for all,
+for your platform, in which case you would need a working compiler toolchain.
 
-#### 1. Installing pipx
+### `nix` dev shell
 
-Windows (development version required due to [pypa/pipx#940](https://github.com/pypa/pipx/issues/940)):
+You may want to use `nix` dev shell from this repo to bootstrap `LLVM 18`
+as your compiler toolchain.
 
-```shell
-py -3 -m pip install --user git+https://github.com/pypa/pipx.git
-py -3 -m pipx ensurepath
-```
+<ins>NOTE</ins>: [flakes](https://nixos.wiki/wiki/Flakes) support must be **enabled** for
+this to work:
 
-Linux/MacOS:
-
-```shell
-python -m pip install --user pipx
-python -m pipx ensurepath
-```
-
-#### 2. Installing so-vits-svc-fork
+<ins>NOTE</ins>: on `macOS` you don't need this if you have `Xcode` installed
+and wish using its toolchain instead.
 
 ```shell
-pipx install so-vits-svc-fork --python=3.11
-pipx inject so-vits-svc-fork torch torchaudio --pip-args="--upgrade" --index-url=https://download.pytorch.org/whl/cu121 # https://download.pytorch.org/whl/nightly/cu121
+nix develop
 ```
 
-### Option 3. Manual installation
+### rye
 
-<details>
-  <summary>Creating a virtual environment</summary>
+[rye](https://docs.astral.sh/ruff/) is needed to build a wheel.
 
-Windows:
+Follow [official](https://rye.astral.sh) installation instructions or
+install with [nix](https://nixos.org/download/):
 
 ```shell
-py -3.11 -m venv venv
-venv\Scripts\activate
+nix-env -iA nixpkgs.rye
 ```
 
-Linux/MacOS:
+or using flake profiles:
 
 ```shell
-python3.11 -m venv venv
-source venv/bin/activate
+nix profile install nixpkgs#rye
 ```
 
-Anaconda:
+<ins>NOTE</ins>: [nix](https://nixos.org/download/) with [flakes](https://nixos.wiki/wiki/Flakes)
+enabled is **required** for the later. Also note that the installation won't be hermetic due to
+opinionated rye bootstrapping process which needs to be addressed in `nixpkgs`
+
+### Apple Silicon is default
+
+### Building wheel
 
 ```shell
-conda create -n so-vits-svc-fork python=3.11 pip
-conda activate so-vits-svc-fork
+nix develop
+rye build
 ```
-
-Installing without creating a virtual environment may cause a `PermissionError` if Python is installed in Program Files, etc.
-
-</details>
-
-Install this via pip (or your favourite package manager that uses pip):
 
 ```shell
-python -m pip install -U pip setuptools wheel
-pip install -U torch torchaudio --index-url https://download.pytorch.org/whl/cu121 # https://download.pytorch.org/whl/nightly/cu121
-pip install -U so-vits-svc-fork
+rye sync
 ```
-
-<details>
-  <summary>Notes</summary>
-
-- If no GPU is available or using MacOS, simply remove `pip install -U torch torchaudio --index-url https://download.pytorch.org/whl/cu121`. MPS is probably supported.
-- If you are using an AMD GPU on Linux, replace `--index-url https://download.pytorch.org/whl/cu121` with `--index-url https://download.pytorch.org/whl/nightly/rocm5.7`. AMD GPUs are not supported on Windows ([#120](https://github.com/voicepaw/so-vits-svc-fork/issues/120)).
-  </details>
 
 ### Update
 

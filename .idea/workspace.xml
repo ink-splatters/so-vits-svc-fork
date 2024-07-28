@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7aacf003-229b-4eb0-80a4-ff105dc3c3d4" name="変更" comment="">
-      <change beforePath="$PROJECT_DIR$/src/so_vits_svc_fork/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/so_vits_svc_fork/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/so_vits_svc_fork/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/so_vits_svc_fork/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/so_vits_svc_fork/modules/onnx/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/so_vits_svc_fork/modules/onnx/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/so_vits_svc_fork/modules/onnx/model_onnx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/so_vits_svc_fork/modules/onnx/_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/so_vits_svc_fork/modules/onnx/onnx_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/so_vits_svc_fork/modules/onnx/_export.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/10.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/3.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/4.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/5.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/6.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/7.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/8.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/9.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dataset_raw/34j/nested/あ.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flake8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README_zh_CN.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/easy-installation/install-cn.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/easy-installation/install.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +33,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2N3U7T2ZqSld9sk8NQi5nSwUOO9" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -51,9 +49,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;nix&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ic/dev/so-vits-svc-fork&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -68,6 +69,7 @@
   <component name="RunManager" selected="Python.so-vits-svc-fork">
     <configuration name="so-vits-svc-fork" type="PythonConfigurationType" factoryName="Python">
       <module name="so-vits-svc-fork" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -90,6 +92,7 @@
     </configuration>
     <configuration name="pytest" type="tests" factoryName="py.test">
       <module name="{{ project_slug }}" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -115,6 +118,13 @@
       <option name="_new_targetType" value="&quot;CUSTOM&quot;" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

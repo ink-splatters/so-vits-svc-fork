@@ -117,9 +117,8 @@ target-version = "py311"
 
 [tool.ruff.lint]
 preview = true
-exclude = [
-    "src/polylytics/sfx/prompt.py",
-]
+line-length = 88
+
 select = [
     # pycodestyle
     "E",
