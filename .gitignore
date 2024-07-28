@@ -156,3 +156,9 @@ tests/**/*.yaml
 *.tfevents.*
 *.pt
 user_gui_presets.json
+
+.idea/*
+
+!.idea/codeStyles
+!.idea/runConfigurations
+!.idea/ruff.xml
