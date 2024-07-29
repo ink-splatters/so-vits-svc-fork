@@ -113,26 +113,11 @@ nix profile install nixpkgs#rye
 enabled is **required** for the later. Also note that the installation won't be hermetic due to
 opinionated rye bootstrapping process which needs to be addressed in `nixpkgs`
 
-### Apple Silicon is default
-
 ### Building wheel
 
 ```shell
 nix develop
 rye build
-```
-
-```shell
-rye sync
-```
-
-### Update
-
-Please update this package regularly to get the latest features and bug fixes.
-
-```shell
-pip install -U so-vits-svc-fork
-# pipx upgrade so-vits-svc-fork
 ```
 
 ## Usage

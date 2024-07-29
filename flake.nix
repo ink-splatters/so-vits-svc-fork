@@ -27,16 +27,19 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        inherit (pkgs) llvmPackages_18;
+        inherit (pkgs) llvmPackages_18 cmake ninja;
         inherit (llvmPackages_18) stdenv clangUseLLVM;
       in
       {
         formatter = pkgs.nixfmt-rfc-style;
         devShells.default = pkgs.mkShell.override { inherit stdenv; } {
-          nativeBuildInputs = [ clangUseLLVM ];
+          nativeBuildInputs = [
+            clangUseLLVM
+            cmake
+            ninja
+          ];
           shellHook = ''
-                        export PS1="\n\[\033[01;36m\]‹so-vits-svc› \\$ \[\033[00m\]"
-            	    export CC=clang++
+            export PS1="\n\[\033[01;36m\]‹so-vits-svc› \\$ \[\033[00m\]"
           '';
         };
 
