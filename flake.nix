@@ -31,11 +31,11 @@
           cmake
           ninja
           lib
-          llvmPackages_18
-          lld_18
+          llvmPackages_19
+          lld_19
           ;
         inherit (lib) optionalString;
-        inherit (llvmPackages_18) stdenv clangUseLLVM;
+        inherit (llvmPackages_19) stdenv clangUseLLVM;
 
         # CFLAGS = "-O3  -ffast-math -funroll-loops " + lib.optionalString stdenv.isDarwin "-mcpu=apple-m1";
         # CXXFLAGS = "${CFLAGS}";
@@ -49,7 +49,7 @@
           inherit CFLAGS CXXFLAGS LDFLAGS;
           nativeBuildInputs = [
             clangUseLLVM
-            lld_18
+            lld_19
             ninja
             cmake
           ];
